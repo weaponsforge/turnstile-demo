@@ -1,8 +1,22 @@
+import routes from './routes'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Navigation from './components/Navigation'
+
 function App() {
   return (
-    <div className="w-[1280px] text-center bg-sky-200">
-      <h1>Hello, world!</h1>
-    </div>
+    <Router>
+      <Navigation />
+
+      <Routes>
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={<route.component />}
+          />
+        ))}
+      </Routes>
+    </Router>
   )
 }
 
